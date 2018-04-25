@@ -18,6 +18,7 @@
     "test": "jest /lib --coverage",
     "lint": "eslint /lib --cache",
     "format": "prettier-eslint --write --ignore **/node_modules/** \"lib/**/*.js\"",
+    "precommit": "lint-staged",
     "prepublishOnly": "npm run build"
   },
   "repository": {

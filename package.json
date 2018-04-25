@@ -1,0 +1,74 @@
+{
+  "name": "wrap-error-handler",
+  "version": "1.0.0",
+  "description": "Utility used to catch unhandled exceptions in express route handlers",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.11.1",
+    "npm": "~5.6.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "babel lib/ --ignore \"**__tests__**\" -s -d dist",
+    "test": "jest /lib --coverage",
+    "lint": "eslint /lib --cache",
+    "format": "prettier-eslint --write --ignore **/node_modules/** \"lib/**/*.js\"",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pooleparty/wrap-error-handler.git"
+  },
+  "keywords": [
+    "express",
+    "error"
+  ],
+  "author": "pooleparty",
+  "bugs": {
+    "url": "https://github.com/pooleparty/wrap-error-handler/issues"
+  },
+  "homepage": "https://github.com/pooleparty/wrap-error-handler#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.4",
+    "prettier-eslint-cli": "^4.7.1",
+    "rimraf": "^2.6.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
